@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class Map {
     private HashMap<Integer, Location> world = new HashMap<>();
-    private int start = 0;
+    private int start = 1;
     private int currentPosition = start;
 
     public boolean loadMap(){
@@ -15,7 +15,7 @@ public class Map {
             while ((line = br.readLine()) != null){
                 String[] lines = line.split(",");
                 int id = Integer.parseInt(lines[0]);
-                String name = String.valueOf(Integer.parseInt(lines[1]));
+                String name = lines[1];
                 ArrayList<Integer>avaible = new ArrayList<>();
                 boolean locked = false;
                 for (int i = 2; i < lines.length; i++) {
@@ -28,11 +28,13 @@ public class Map {
                 Location l = new Location(id,name,avaible,locked);
                 world.put(id, l);
             }
+
             return true;
         }catch (IOException e){
             System.out.println("chyba pri nacitani mapy");
         }
         return false;
+
     }
 
     public int getCurrentPosition() {

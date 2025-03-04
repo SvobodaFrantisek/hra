@@ -2,27 +2,29 @@ import java.util.Scanner;
 
 public class Jdi implements Command {
     private Scanner sc = new Scanner(System.in);
-    private Location currentLocation = new Location();
-    private Map map = new Map();
-
+    private Map map;
+    public Jdi(Map map){
+        this.map = map;
+    }
     @Override
     public String execute() {
         int currentID = map.getCurrentPosition();
-        Location cLocation = map.getCurrentLocation(currentID);
-        System.out.println("Current Location: " + cLocation);
+        Location currentLocation = map.getCurrentLocation(currentID);
+        System.out.println("Current " + currentLocation);
         System.out.println("Current ID: " + currentID);
+        System.out.println("Avaible id of locations from this location" + currentLocation.getLocations());
         System.out.println("enter id of your target location");
-        System.out.println("1-Opusteny_Dum, 2-Znicena_Ulice, 3-Namesti, 4-Opusteny_Obchod, 5-Park, 6-Podivny_Dum, 7-Opustena_Nemocnice, 8-Kemp");
-        String input = sc.next();
+        System.out.println(">>");
         try {
-            int targetID = Integer.parseInt(input);
+            int input = sc.nextInt();
+            int targetID = input;
             if (currentLocation.getLocations().contains(targetID)) {
-               map.setCurrentPosition(targetID);
-                System.out.println("you moved into: " + map.getCurrentLocation(targetID).getName());
-            }else{
-                System.out.println("you cant go there");
+                map.setCurrentPosition(targetID);
+                System.out.println("You moved into: " + map.getCurrentLocation(targetID).getName());
+            } else {
+                System.out.println("You cant go there.");
             }
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             System.out.println("you entered an invalid input");
         }
         return null;

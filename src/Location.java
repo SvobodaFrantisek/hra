@@ -47,4 +47,12 @@ public class Location {
     public void setLocked(boolean locked) {
         this.locked = locked;
     }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
