@@ -3,13 +3,17 @@ import java.util.Scanner;
 public class Jdi implements Command {
     private Scanner sc = new Scanner(System.in);
     private Map map;
-    public Jdi(Map map){
+    private Location currentLocation = new Location();
+    private Location targetLocation = new Location();
+
+    public Jdi(Map map) {
         this.map = map;
     }
+
     @Override
     public String execute() {
         int currentID = map.getCurrentPosition();
-        Location currentLocation = map.getCurrentLocation(currentID);
+        currentLocation = map.getCurrentLocation(currentID);
         System.out.println("Current " + currentLocation);
         System.out.println("Current ID: " + currentID);
         System.out.println("Avaible id of locations from this location" + currentLocation.getLocations());
@@ -18,11 +22,18 @@ public class Jdi implements Command {
         try {
             int input = sc.nextInt();
             int targetID = input;
+
+            targetLocation = map.getWorld().get(targetID);
+
+            if (targetLocation.isLocked()) {
+                return "this location is locked";
+            }
+
             if (currentLocation.getLocations().contains(targetID)) {
                 map.setCurrentPosition(targetID);
-                System.out.println("You moved into: " + map.getCurrentLocation(targetID).getName());
+                return "you moved to " + targetLocation.getName();
             } else {
-                System.out.println("You cant go there.");
+                return "you cant move there";
             }
         } catch (Exception e) {
             System.out.println("you entered an invalid input");
