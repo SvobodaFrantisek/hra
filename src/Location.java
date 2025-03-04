@@ -13,6 +13,9 @@ public class Location {
         this.locked = locked;
     }
 
+    public Location() {
+    }
+
     public int getId() {
         return id;
     }

@@ -27,9 +27,6 @@ public class Map {
                 }
                 Location l = new Location(id,name,avaible,locked);
                 world.put(id, l);
-
-                world.put(Integer.valueOf(lines[0]), l);
-
             }
             return true;
         }catch (IOException e){
@@ -38,4 +35,14 @@ public class Map {
         return false;
     }
 
+    public int getCurrentPosition() {
+        return currentPosition;
+    }
+
+    public void setCurrentPosition(int currentPosition) {
+        this.currentPosition = currentPosition;
+    }
+    public Location getCurrentLocation(int id) {
+        return world.get(id);
+    }
 }
