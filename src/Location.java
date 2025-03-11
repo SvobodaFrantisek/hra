@@ -10,7 +10,6 @@ public class Location {
         this.id = id;
         this.name = name;
         this.locations = locations;
-        this.locked = locked;
     }
 
     public Location() {

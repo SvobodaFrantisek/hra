@@ -29,6 +29,7 @@ public class Console {
         inicialization();
         map.loadMap();
         try {
+
             do {
                 run();
             } while (!exit);
