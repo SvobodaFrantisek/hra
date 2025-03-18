@@ -11,6 +11,7 @@ public class Character {
         this.location = location;
     }
 
+
     public String getName() {
         return name;
     }
