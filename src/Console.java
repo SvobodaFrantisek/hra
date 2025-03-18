@@ -8,9 +8,20 @@ public class Console {
     private HashMap<String, Command> commands = new HashMap<>();
     private Scanner sc = new Scanner(System.in);
     private Map map = new Map();
+    private Loader loader = new Loader(map);
+    private Player player = new Player("Hrac", 100, 0);
 
     public void inicialization() {
         commands.put("jdi", new Jdi(map));
+        commands.put("pomoc", new Pomoc());
+        commands.put("prozkoumej", new Prozkoumej(map));
+        commands.put("seber", new Seber(map, player));
+        commands.put("inventar", new Inventar(player));
+        commands.put("poloz", new Poloz(player));
+        commands.put("mluv", new Mluv(map, loader));
+        commands.put("pouzij", new Pouzij(player));
+        commands.put("konec", new Konec());
+
     }
 
     public void run() {
@@ -28,6 +39,8 @@ public class Console {
     public void start() {
         inicialization();
         map.loadMap();
+        loader.loadItems();
+        loader.loadCharacters();
         try {
 
             do {

@@ -1,5 +1,5 @@
 
-public class Konec implements Command{
+public class Konec implements Command {
     @Override
     public String execute() {
         return "Hra ukoncena";

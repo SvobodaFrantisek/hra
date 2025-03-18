@@ -1,15 +1,18 @@
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Location {
     private int id;
     private String name;
     private ArrayList<Integer> locations;
+    private ArrayList<Item> availableItems;
     private boolean locked;
 
     public Location(int id, String name, ArrayList<Integer> locations, boolean locked) {
         this.id = id;
         this.name = name;
         this.locations = locations;
+        this.availableItems = new ArrayList<>();
     }
 
     public Location() {
@@ -45,6 +48,21 @@ public class Location {
 
     public void setLocked(boolean locked) {
         this.locked = locked;
+    }
+
+    public void addItem(Item item) {
+        availableItems.add(item);
+    }
+
+    public ArrayList<Item> getAvailableItems() {
+        if (availableItems == null) {
+            return new ArrayList<>();
+        }
+        return availableItems;
+    }
+
+    public void setAvailableItems(ArrayList<Item> availableItems) {
+        this.availableItems = availableItems;
     }
 
     @Override

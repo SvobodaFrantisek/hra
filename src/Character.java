@@ -1,36 +1,30 @@
 public class Character {
-    public String name;
-    public String role;
-    public String text;
+    private String name;
+    private String role;
+    private String text;
+    private Location location;
 
-    public Character(String name, String role, String text) {
+    public Character(String name, String role, String text, Location location) {
         this.name = name;
         this.role = role;
         this.text = text;
+        this.location = location;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getRole() {
         return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public String getText() {
         return text;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public Location getLocation() {
+        return location;
     }
 
     @Override
@@ -39,6 +33,7 @@ public class Character {
                 "name='" + name + '\'' +
                 ", role='" + role + '\'' +
                 ", text='" + text + '\'' +
+                ", location=" + location.getName() +
                 '}';
     }
 }

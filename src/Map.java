@@ -52,4 +52,13 @@ public class Map {
     public HashMap<Integer, Location> getWorld() {
         return world;
     }
+
+    public Location getLocation(String name) {
+        for (Location location : world.values()) {
+            if (location.getName().equalsIgnoreCase(name)) {
+                return location;
+            }
+        }
+        return null;
+    }
 }
