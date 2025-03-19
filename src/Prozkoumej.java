@@ -31,10 +31,6 @@ public class Prozkoumej implements Command {
         try {
             int targetID = sc.nextInt();
 
-            if (!currentLocation.getLocations().contains(targetID)) {
-                return "you cant explore this location";
-            }
-
             targetLocation = map.getWorld().get(targetID);
 
             if (targetLocation == null) {
@@ -44,6 +40,7 @@ public class Prozkoumej implements Command {
             if (targetLocation.isLocked()) {
                 return "this location is locked";
             }
+            System.out.println(targetLocation.toString());
 
 
             return "you explored " + targetLocation.getName() + "avaiable items " + targetLocation.getAvailableItems();

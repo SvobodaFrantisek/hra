@@ -16,15 +16,20 @@ public class Pouzij implements Command {
 
         System.out.println("what item you wanna use ");
         String itemName = sc.next().trim().toLowerCase();
-        Item item = null;
 
+
+        Item item = null;
         for (int i = 0; i < player.getInventory().getItems().size(); i++) {
-            if (player.getInventory().getItems().get(i).getName().toLowerCase().equals(itemName)) {
+            if (player.getInventory().getItems().get(i).getName().equalsIgnoreCase(itemName)) {
                 item = player.getInventory().getItems().get(i);
-                return "you used " + player.getInventory().getItems().get(i).getName();
             }
         }
-        player.getInventory().getItems().remove(item);
+
+        if (item != null) {
+            player.getInventory().getItems().remove(item);
+            return "you used " + item.getName();
+        }
+
         return "this item is not in your invetory";
 
     }

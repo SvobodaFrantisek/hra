@@ -13,6 +13,7 @@ public class Location {
         this.name = name;
         this.locations = locations;
         this.availableItems = new ArrayList<>();
+        this.locked = locked;
     }
 
     public Location() {

@@ -33,10 +33,17 @@ public class Inventar implements Command {
             System.out.println("inventory is empty");
         } else {
             System.out.println("your inventory");
-            for (Item item : items) {
-                System.out.println(item.getName() + " | " + item.getDescription());
+            for (int i = 0; i < items.size(); i++) {
+                System.out.println(items.get(i).getName() + " || " + items.get(i).getDescription());
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Inventar{" +
+                "items=" + items +
+                '}';
     }
 
     @Override

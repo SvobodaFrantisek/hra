@@ -21,6 +21,7 @@ public class Console {
         commands.put("mluv", new Mluv(map, loader));
         commands.put("pouzij", new Pouzij(player));
         commands.put("konec", new Konec());
+        commands.put("napoveda", new Napoveda(map,player));
 
     }
 

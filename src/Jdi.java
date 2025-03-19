@@ -21,9 +21,7 @@ public class Jdi implements Command {
         System.out.println("enter id of your target location");
         System.out.println(">>");
         try {
-            int input = sc.nextInt();
-            int targetID = input;
-
+            int targetID = sc.nextInt();
             targetLocation = map.getWorld().get(targetID);
 
             if (targetLocation.isLocked()) {
@@ -32,14 +30,16 @@ public class Jdi implements Command {
 
             if (currentLocation.getLocations().contains(targetID)) {
                 map.setCurrentPosition(targetID);
-                return "you moved to " + targetLocation.getName();
             } else {
                 return "you cant move there";
             }
+
+
+            return "you move into" + targetLocation.getName();
         } catch (Exception e) {
-            System.out.println("you entered an invalid input");
+            sc.nextLine();
+            return " you entered invalid input";
         }
-        return null;
     }
 
     @Override
