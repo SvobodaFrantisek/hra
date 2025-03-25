@@ -18,14 +18,23 @@ public class Map {
                 String name = lines[1];
                 ArrayList<Integer> avaible = new ArrayList<>();
                 boolean locked = false;
-                for (int i = 2; i < lines.length; i++) {
+                String requiredItem = null;
+                int i = 2;
+                while (i < lines.length) {
                     if (lines[i].equals("LOCKED")) {
                         locked = true;
+                        i++;
+                        if (i < lines.length) {
+                            requiredItem = lines[i];
+                        }
+                        break;
                     } else {
                         avaible.add(Integer.parseInt(lines[i]));
                     }
+                    i++;
                 }
-                Location l = new Location(id, name, avaible, locked);
+
+                Location l = new Location(id, name, avaible, locked, requiredItem);
                 world.put(id, l);
             }
 

@@ -4,12 +4,14 @@ public class Prozkoumej implements Command {
     private Location location;
     private Scanner sc = new Scanner(System.in);
     private Map map;
+    private Player player;
     private Location currentLocation = new Location();
     private Location targetLocation = new Location();
 
 
-    public Prozkoumej(Map map) {
+    public Prozkoumej(Map map, Player player) {
         this.map = map;
+        this.player = player;
     }
 
     @Override
@@ -42,7 +44,10 @@ public class Prozkoumej implements Command {
             }
             System.out.println(targetLocation.toString());
 
+            if (player.hasItem("Svitilna")) {
+                return "you explored " + targetLocation.getName() + "avaiable items " + targetLocation.getAvailableItems() + " characters in this room " + targetLocation.getCharacters();
 
+            }
             return "you explored " + targetLocation.getName() + "avaiable items " + targetLocation.getAvailableItems();
         } catch (Exception e) {
             sc.nextLine();

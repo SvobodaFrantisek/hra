@@ -47,7 +47,7 @@ public class Loader {
 
                 Location location = map.getLocation(locationName);
                 Character character = new Character(name, role, text, location);
-                characters.put(name.toLowerCase(), character);
+                location.addCharacter(character);
             }
             return true;
         } catch (IOException e) {
@@ -56,7 +56,4 @@ public class Loader {
         return false;
     }
 
-    public Character getCharacter(String name) {
-        return characters.get(name.toLowerCase());
-    }
 }

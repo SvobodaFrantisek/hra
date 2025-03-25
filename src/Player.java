@@ -2,6 +2,8 @@ public class Player {
     private String name;
     private int health;
     private int stress;
+    private int hunger;
+    private int hydration;
     private Inventar inventory;
 
 
@@ -40,12 +42,51 @@ public class Player {
         return inventory;
     }
 
+    public boolean hasItem(String itemName) {
+        for (int i = 0; i < inventory.getItems().size(); i++) {
+            if (inventory.getItems().get(i).getName().equalsIgnoreCase(itemName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void eat(String itemName) {
+        if (itemName.equalsIgnoreCase("")) {
+            health -= 20;
+            if (hunger <= 90) {
+                hunger += 10;
+            }
+        } else {
+            if (hunger <= 70) {
+                hunger += 30;
+            }
+        }
+    }
+
+    public void drink(String itemName) {
+        if (itemName.equalsIgnoreCase("")) {
+            health -= 20;
+            if (hydration <= 90) {
+                hydration += 10;
+            }
+        } else {
+            if (hydration <= 70) {
+                hydration += 30;
+            }
+        }
+    }
+
+    public void decreaseHealth(int amount) {
+        health -= amount;
+    }
+
+    public void increaseHealth(int amount) {
+        health += amount;
+    }
+
     @Override
     public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", health=" + health +
-                ", stressLevel=" + stress +
-                '}';
+        return "Player{" + "name='" + name + '\'' + ", health=" + health + ", stressLevel=" + stress + '}';
     }
 }

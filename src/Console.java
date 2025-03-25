@@ -12,16 +12,16 @@ public class Console {
     private Player player = new Player("Hrac", 100, 0);
 
     public void inicialization() {
-        commands.put("jdi", new Jdi(map));
+        commands.put("jdi", new Jdi(map, player));
         commands.put("pomoc", new Pomoc());
-        commands.put("prozkoumej", new Prozkoumej(map));
+        commands.put("prozkoumej", new Prozkoumej(map, player));
         commands.put("seber", new Seber(map, player));
         commands.put("inventar", new Inventar(player));
         commands.put("poloz", new Poloz(player));
-        commands.put("mluv", new Mluv(map, loader));
+        commands.put("mluv", new Mluv(map, player));
         commands.put("pouzij", new Pouzij(player));
         commands.put("konec", new Konec());
-        commands.put("napoveda", new Napoveda(map,player));
+        commands.put("napoveda", new Napoveda(map, player));
 
     }
 
