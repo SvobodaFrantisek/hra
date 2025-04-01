@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+/**
+ * Trida reprezentujici prikaz pro prozkoumani lokace.
+ */
 public class Prozkoumej implements Command {
     private Location location;
     private Scanner sc = new Scanner(System.in);
@@ -8,7 +11,12 @@ public class Prozkoumej implements Command {
     private Location currentLocation = new Location();
     private Location targetLocation = new Location();
 
-
+    /**
+     * Vytvori prikaz Prozkoumej.
+     *
+     * @param map    Mapa hry.
+     * @param player Hrac.
+     */
     public Prozkoumej(Map map, Player player) {
         this.map = map;
         this.player = player;
@@ -19,6 +27,12 @@ public class Prozkoumej implements Command {
         return false;
     }
 
+    /**
+     * Vykona prikaz prozkoumej, ktery umozni hraci prozkoumat aktualni lokaci.
+     * Hrac muze ziskat informace o dostupnych predmetech a postavach v dane lokalite.
+     *
+     * @return Popis dostupnych predmetu a postav v aktualni lokalite.
+     */
     @Override
     public String execute() {
         int currentID = map.getCurrentPosition();

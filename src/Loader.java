@@ -3,14 +3,27 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * Trida pro nacteni hernich dat (itemu a postav).
+ */
 public class Loader {
     private Map map;
     private HashMap<String, Character> characters = new HashMap<>();
 
+    /**
+     * Vytvori instanci nacitace s prirazenou mapou hry.
+     *
+     * @param gameMap Mapa hry.
+     */
     public Loader(Map gameMap) {
         this.map = gameMap;
     }
 
+    /**
+     * Nacte predmety ze souboru a priradi je do lokaci.
+     *
+     * @return true pokud se predmety nactou uspesne, jinak false.
+     */
     public boolean loadItems() {
         try (BufferedReader br = new BufferedReader(new FileReader("Itemy.txt"))) {
             String line;
@@ -33,6 +46,11 @@ public class Loader {
         return false;
     }
 
+    /**
+     * Nacte postavy ze souboru a priradi je do lokaci.
+     *
+     * @return true pokud se postavy nactou uspesne, jinak false.
+     */
     public boolean loadCharacters() {
         try (BufferedReader br = new BufferedReader(new FileReader("Characters.txt"))) {
             String line;

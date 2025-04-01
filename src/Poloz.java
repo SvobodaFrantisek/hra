@@ -1,13 +1,27 @@
 import java.util.Scanner;
 
+/**
+ * Trida reprezentujici prikaz pro polozani predmetu.
+ */
 public class Poloz implements Command {
     private Player player;
     private Scanner sc = new Scanner(System.in);
 
+    /**
+     * Vytvori prikaz Poloz.
+     *
+     * @param player Hrac.
+     */
     public Poloz(Player player) {
         this.player = player;
     }
 
+    /**
+     * Vykona prikaz poloz, ktery umozni hraci polozit predmet do aktualni lokace,
+     * pokud ho ma ve svem inventari.
+     *
+     * @return Zprava o tom, zda byl predmet polozit, nebo zda hrac nema predmet k poloziti.
+     */
     @Override
     public String execute() {
         if (player.getInventory().getItems().isEmpty()) {

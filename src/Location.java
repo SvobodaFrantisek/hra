@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * Trida reprezentujici lokaci ve hre.
+ */
 public class Location {
     private int id;
     private String name;
@@ -10,6 +13,15 @@ public class Location {
     private boolean locked;
     private String requiredItem;
 
+    /**
+     * Vytvori lokaci s urcenym ID, nazvem a seznamem sousednich lokaci.
+     *
+     * @param id           ID lokace.
+     * @param name         Nazev lokace.
+     * @param locations    Seznam ID sousednich lokaci.
+     * @param locked       True pokud je lokace zamcena, jinak false.
+     * @param requiredItem Predmet nutny k odemceni lokace.
+     */
     public Location(int id, String name, ArrayList<Integer> locations, boolean locked, String requiredItem) {
         this.id = id;
         this.name = name;
@@ -55,14 +67,30 @@ public class Location {
         this.locked = locked;
     }
 
+    /**
+     * Prida predmet do lokace.
+     *
+     * @param item Predmet, ktery se ma pridat.
+     */
     public void addItem(Item item) {
         availableItems.add(item);
     }
 
+    /**
+     * Prida postavu do lokace.
+     *
+     * @param character Postava, ktera se ma pridat.
+     */
     public void addCharacter(Character character) {
         characters.add(character);
     }
 
+    /**
+     * Najde postavu podle jmena.
+     *
+     * @param characterName Jmeno hledane postavy.
+     * @return Objekt postavy, pokud existuje, jinak null.
+     */
     public Character findCharacter(String characterName) {
         for (int i = 0; i < characters.size(); i++) {
             if (characters.get(i).getName().equalsIgnoreCase(characterName)) {

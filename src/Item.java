@@ -1,9 +1,18 @@
+/**
+ * Reprezentuje herni predmet.
+ */
 public class Item {
     private String name;
     private String description;
     private String location;
 
-
+    /**
+     * Vytvari item ve hre.
+     *
+     * @param name        nazev predmetu.
+     * @param description popisek predmetu.
+     * @param location    kde se predmet nachazi.
+     */
     public Item(String name, String description, String location) {
         this.name = name;
         this.description = description;
@@ -36,10 +45,6 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", location='" + location + '\'' +
-                '}';
+        return "Item{" + "name='" + name + '\'' + ", description='" + description + '\'' + ", location='" + location + '\'' + '}';
     }
 }

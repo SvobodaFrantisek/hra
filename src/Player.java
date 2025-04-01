@@ -1,3 +1,6 @@
+/**
+ * Trida reprezentujici hrace ve hre.
+ */
 public class Player {
     private String name;
     private int health;
@@ -6,7 +9,13 @@ public class Player {
     private int hydration;
     private Inventar inventory;
 
-
+    /**
+     * Vytvori hrace s danym jmenem, zdravim a skore.
+     *
+     * @param name        Jmeno hrace.
+     * @param health      Pocet zivotu hrace.
+     * @param stressLevel Uroven stresu hrace.
+     */
     public Player(String name, int health, int stressLevel) {
         this.name = name;
         this.health = health;
@@ -42,6 +51,12 @@ public class Player {
         return inventory;
     }
 
+    /**
+     * Zkontroluje, zda hrac ma urcity predmet.
+     *
+     * @param itemName Nazev predmetu.
+     * @return true, pokud hrac ma predmet, jinak false.
+     */
     public boolean hasItem(String itemName) {
         for (int i = 0; i < inventory.getItems().size(); i++) {
             if (inventory.getItems().get(i).getName().equalsIgnoreCase(itemName)) {

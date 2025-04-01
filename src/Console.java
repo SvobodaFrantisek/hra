@@ -1,8 +1,9 @@
-
-
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * Konzolovy system hry.
+ */
 public class Console {
     private boolean exit = false;
     private HashMap<String, Command> commands = new HashMap<>();
@@ -11,6 +12,9 @@ public class Console {
     private Loader loader = new Loader(map);
     private Player player = new Player("Hrac", 100, 0);
 
+    /**
+     * Inicializuje dostupne prikazy.
+     */
     public void inicialization() {
         commands.put("jdi", new Jdi(map, player));
         commands.put("pomoc", new Pomoc());
@@ -22,34 +26,53 @@ public class Console {
         commands.put("pouzij", new Pouzij(player));
         commands.put("konec", new Konec());
         commands.put("napoveda", new Napoveda(map, player));
-
     }
 
-    public void run() {
-        System.out.println(">>");
-        String input = sc.next();
-        input = input.toLowerCase();
-        input.trim();
+    /**
+     * Spusti konzoli a umoznuje zadavani prikazu.
+     */
+    public String run(String input) {
+        input = input.toLowerCase().trim();
         if (commands.containsKey(input)) {
-            System.out.println(">>" + commands.get(input).execute());
+            String result = commands.get(input).execute();
+            if (input.equals("konec")) {
+                exit = true;
+            }
+            return result;
         } else {
-            System.out.println(">> undefined command");
+            return "undefined command";
         }
     }
 
+    /**
+     * Spusti hru.
+     */
     public void start() {
         inicialization();
         map.loadMap();
         loader.loadItems();
         loader.loadCharacters();
-        try {
 
-            do {
-                run();
-            } while (!exit);
+        try {
+            while (!exit) {
+                System.out.print(">> ");
+                String input = sc.nextLine();
+                String output = run(input);
+                System.out.println(">> " + output);
+                if (input.equals("konec")) {
+                    exit = true;
+                }
+            }
         } catch (Exception e) {
-            e.getMessage();
+             e.getMessage();
         }
     }
 
+    public boolean isExit() {
+        return exit;
+    }
+
+    public void setExit(boolean exit) {
+        this.exit = exit;
+    }
 }

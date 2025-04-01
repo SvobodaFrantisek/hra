@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+/**
+ * Prikaz pro pohyb hrace mezi lokacemi.
+ */
 public class Jdi implements Command {
     private Scanner sc = new Scanner(System.in);
     private Map map;
@@ -12,6 +15,13 @@ public class Jdi implements Command {
         this.player = player;
     }
 
+    /**
+     * Vykona prikaz jdi, ktery umozni hraci pohybovat se mezi lokalitami na mape.
+     * Hrac zada cilovou lokalitu, do ktere chce prejit. Pokud je cilova lokalita uzamcena, hrac musi mit
+     * pozadovany predmet k jeji odemceni.
+     *
+     * @return Popis akce, zda se hrac pohyboval do nove lokality nebo zda byla lokalita uzamcena.
+     */
     @Override
     public String execute() {
         int currentID = map.getCurrentPosition();

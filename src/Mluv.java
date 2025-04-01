@@ -1,16 +1,31 @@
 import java.util.Scanner;
 
+/**
+ * Trida reprezentujici prikaz pro mluveni s postavami.
+ */
 public class Mluv implements Command {
     private Scanner sc = new Scanner(System.in);
     private Map map;
     private Player player;
     private Location currentLocation;
 
+    /**
+     * Vytvori prikaz Mluv.
+     *
+     * @param map    Mapa hry.
+     * @param player Hrac.
+     */
     public Mluv(Map map, Player player) {
         this.map = map;
         this.player = player;
     }
 
+    /**
+     * Vykona prikaz mluv, ktery umozni hraci komunikovat s postavou v aktualni lokalite.
+     * Pokud je v lokalite postava, hrac muze s ni promluvit a ziskat informace.
+     *
+     * @return Zprava o tom, zda byla nalezena postava a co hrac o ni zjistil.
+     */
     @Override
     public String execute() {
         int currentID = map.getCurrentPosition();

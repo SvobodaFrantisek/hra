@@ -1,15 +1,30 @@
 import java.util.Scanner;
 
+/**
+ * Trida reprezentujici prikaz pro sebrani predmetu.
+ */
 public class Seber implements Command {
     private Scanner sc = new Scanner(System.in);
     private Map map;
     private Player player;
 
+    /**
+     * Vytvori prikaz Seber.
+     *
+     * @param map    Mapa hry.
+     * @param player Hrac.
+     */
     public Seber(Map map, Player player) {
         this.map = map;
         this.player = player;
     }
 
+    /**
+     * Vykona prikaz seber, ktery umozni hraci sebrat predmet z aktualni lokace,
+     * pokud je predmet k dispozici v lokalite.
+     *
+     * @return Zprava o tom, zda byl predmet sebran, nebo zda nebyl dostupny.
+     */
     @Override
     public String execute() {
         int currentID = map.getCurrentPosition();

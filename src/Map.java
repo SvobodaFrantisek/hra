@@ -4,11 +4,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Trida reprezentujici mapu hry a nacteni mapy ze souboru.
+ */
 public class Map {
     private HashMap<Integer, Location> world = new HashMap<>();
     private int start = 1;
     private int currentPosition = start;
 
+    /**
+     * Nacte mapu hry.
+     */
     public boolean loadMap() {
         try (BufferedReader br = new BufferedReader(new FileReader("mapa.txt"))) {
             String line;
@@ -54,6 +60,12 @@ public class Map {
         this.currentPosition = currentPosition;
     }
 
+    /**
+     * Vrati lokaci podle ID.
+     *
+     * @param id ID hledane lokace.
+     * @return Objekt lokace nebo null, pokud neexistuje.
+     */
     public Location getCurrentLocation(int id) {
         return world.get(id);
     }
@@ -62,6 +74,12 @@ public class Map {
         return world;
     }
 
+    /**
+     * Vrati lokaci podle nazvu.
+     *
+     * @param name Nazev hledane lokace.
+     * @return Objekt lokace nebo null, pokud neexistuje.
+     */
     public Location getLocation(String name) {
         for (Location location : world.values()) {
             if (location.getName().equalsIgnoreCase(name)) {
