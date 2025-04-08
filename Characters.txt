@@ -1,1 +1,2 @@
 Shevchenko, Civilista, "i am injured help me", Podivny_Dum
+Okradac_Mrtvol,Enemy,"run or die", Opusteny_Obchod

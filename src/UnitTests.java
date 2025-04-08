@@ -20,7 +20,7 @@ public class UnitTests {
         map.loadMap();
         loader.loadItems();
         loader.loadCharacters();
-        player = new Player("test", 100, 0);
+        player = new Player("test", 100, 100,100,0);
     }
     /**
      * Testuje, zda se mapa spravne nacte.

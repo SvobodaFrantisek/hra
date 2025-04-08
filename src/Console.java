@@ -10,7 +10,7 @@ public class Console {
     private Scanner sc = new Scanner(System.in);
     private Map map = new Map();
     private Loader loader = new Loader(map);
-    private Player player = new Player("Hrac", 100, 0);
+    private Player player = new Player("Hrac", 100, 100, 100, 0);
 
     /**
      * Inicializuje dostupne prikazy.
@@ -52,13 +52,18 @@ public class Console {
         map.loadMap();
         loader.loadItems();
         loader.loadCharacters();
+        player.getInventory().setCapacity(3);
 
         try {
             while (!exit) {
+                System.out.println(player.status());
                 System.out.print(">> ");
                 String input = sc.nextLine();
                 String output = run(input);
                 System.out.println(">> " + output);
+                if (!player.isAlive()){
+                    exit = true;
+                }
                 if (input.equals("konec")) {
                     exit = true;
                 }

@@ -28,23 +28,32 @@ public class Pouzij implements Command {
             return "no items to use in your invetory ";
         }
 
-        System.out.println("what item you wanna use ");
-        String itemName = sc.next().trim().toLowerCase();
-
-
-        Item item = null;
         for (int i = 0; i < player.getInventory().getItems().size(); i++) {
-            if (player.getInventory().getItems().get(i).getName().equalsIgnoreCase(itemName)) {
-                item = player.getInventory().getItems().get(i);
+            System.out.println(i + 1 + ": " + player.getInventory().getItems().get(i).getName() + " - " + player.getInventory().getItems().get(i).getDescription());
+        }
+        System.out.print("Enter the number of the item you wanna use ");
+        System.out.println(">> ");
+        try {
+            Item item = null;
+            int input = sc.nextInt() - 1;
+            for (int i = 0; i < player.getInventory().getItems().size(); i++) {
+                if (player.getInventory().getItems().get(i).equals(player.getInventory().getItems().get(input))) {
+                    item = player.getInventory().getItems().get(i);
+                }
             }
+            String vypis = "";
+            if (item != null) {
+                vypis = player.useItem(item);
+                player.getInventory().getItems().remove(item);
+                System.out.println(player.getInventory().getCapacity());
+            }
+            return vypis;
+
+        } catch (Exception e) {
+            sc.nextLine();
+            return "invalid input";
         }
 
-        if (item != null) {
-            player.getInventory().getItems().remove(item);
-            return "you used " + item.getName();
-        }
-
-        return "this item is not in your invetory";
 
     }
 

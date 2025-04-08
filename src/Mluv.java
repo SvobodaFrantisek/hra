@@ -41,10 +41,13 @@ public class Mluv implements Command {
 
         if (character.getLocation().equals(currentLocation)) {
             currentLocation.setLocked(true);
-            if (player.hasItem("Svitilna")) {
+            if (player.hasItem("lekarnicka")) {
                 map.getLocation("Kemp").setLocked(false);
+                Character okradac = new Character("Okradac_Mrtvol", "enemy", "run or die", map.getLocation("Park"));
+                map.getLocation("Park").addCharacter(okradac);
+                return "it worked now i have to escape";
             }
-            return "you are talking with " + character.getName();
+            return character.getName()+ " is injured you should help him";
         } else {
             return "this character is not in your location.";
         }

@@ -43,11 +43,16 @@ public class Seber implements Command {
 
         try {
             int input = sc.nextInt() - 1;
-            Item item = currentLocation.getAvailableItems().remove(input);
-            player.getInventory().addItem(item);
+            if (player.getInventory().getItems().size()<player.getInventory().getCapacity()){
+                Item item = currentLocation.getAvailableItems().remove(input);
+                player.getInventory().addItem(item);
+            }else {
+                return "inventory is full";
+            }
 
-            return "You picked up " + item.getName();
+            return "You picked up item ";
         } catch (Exception e) {
+            sc.nextLine();
             return "invalid input";
         }
     }

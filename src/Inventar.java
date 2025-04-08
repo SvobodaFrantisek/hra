@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Inventar implements Command {
     private ArrayList<Item> items;
     private Player player;
+    private int capacity;
 
     /**
      * Vytvori inventar pro hrace.
@@ -37,8 +38,15 @@ public class Inventar implements Command {
      *
      * @param item predmet ve hre
      */
-    public void addItem(Item item) {
-        items.add(item);
+    public String addItem(Item item) {
+        String vypis ="";
+        if (items.size()<capacity) {
+            items.add(item);
+            vypis = "item added";
+        }else {
+            vypis = "inventory is full";
+        }
+        return vypis;
     }
 
     /**
@@ -54,6 +62,14 @@ public class Inventar implements Command {
             }
         }
         return vypis;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
     /**

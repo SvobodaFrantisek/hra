@@ -45,6 +45,8 @@ public class Jdi implements Command {
 
             if (currentLocation.getLocations().contains(targetID)) {
                 map.setCurrentPosition(targetID);
+                player.setHunger(player.getHunger() - 10);
+                player.setHydration(player.getHydration() - 10);
 
                 if (targetLocation.getName().equalsIgnoreCase("Kemp")) {
                     System.out.println("congratulations! you reached the camp and won the game!");
@@ -52,6 +54,20 @@ public class Jdi implements Command {
                 }
             } else {
                 return "you cant move there";
+            }
+            for (int i = 0; i < targetLocation.getCharacters().size(); i++) {
+                Character character = targetLocation.getCharacters().get(i);
+                if (character.getName().equals("Okradac_Mrtvol")){
+                    if (player.hasItem("Pistol") && player.hasItem("Naboje")) {
+                        player.decreaseHealth(10);
+                        player.increaseStress(30);
+                        return "you were attacked by okradac mrtvol but gun saved your life";
+                    } else {
+                        player.decreaseHealth(30);
+                        player.increaseStress(10);
+                        return "okradadac mrtvol escaped but it costs a lot of your hp";
+                    }
+                }
             }
 
 

@@ -14,7 +14,7 @@ public class Prozkoumej implements Command {
     /**
      * Vytvori prikaz Prozkoumej.
      *
-     * @param map    Mapa hry.
+     * @param map    Ma pa hry.
      * @param player Hrac.
      */
     public Prozkoumej(Map map, Player player) {

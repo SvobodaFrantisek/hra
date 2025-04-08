@@ -8,8 +8,6 @@ import java.util.HashMap;
  */
 public class Loader {
     private Map map;
-    private HashMap<String, Character> characters = new HashMap<>();
-
     /**
      * Vytvori instanci nacitace s prirazenou mapou hry.
      *

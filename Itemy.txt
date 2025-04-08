@@ -1,1 +1,11 @@
-Svitilna,pomaha odhalit nepratele ve vedlejsich mistnostech,Znicena_Ulice
+lekarnicka,obnovi 30 zdravi,Opusteny_Dum
+lekarnicka,obnovi 30 zdravi,Opustena_Nemocnice
+svitilna,odhaluje nepratele v okoli,Znicena_Ulice
+konzerva s jidlem,+30 hladu,Opusteny_Obchod
+konzerva se zkazenym jidlem,-20 zdravi +10 hladu,Park
+lahev s vodou,+30 hydratace,Opusteny_Obchod
+lahev se znecistenou vodou,-20 zdravi +10 hydratace,Park
+prasky na uklidneni,-20 stresu,Opustena_Nemocnice
+pistol,pouze pro sebeobranu,Podivny_Dum
+naboje,naboje do pistole,Podivny_Dum
+batoh,zvysi kapacitu inventare,Opusteny_Dum

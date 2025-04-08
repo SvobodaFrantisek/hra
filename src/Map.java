@@ -61,7 +61,7 @@ public class Map {
     }
 
     /**
-     * Vrati lokaci podle ID.
+     * Vrati lokaci podle ID. lehka pomoc chatgpt.com
      *
      * @param id ID hledane lokace.
      * @return Objekt lokace nebo null, pokud neexistuje.
@@ -75,7 +75,7 @@ public class Map {
     }
 
     /**
-     * Vrati lokaci podle nazvu.
+     * Vrati lokaci podle nazvu. pomahalo chatgpt.com
      *
      * @param name Nazev hledane lokace.
      * @return Objekt lokace nebo null, pokud neexistuje.
